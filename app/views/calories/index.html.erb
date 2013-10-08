@@ -1,0 +1,33 @@
+<h1>Listing calories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Calorie in</th>
+      <th>Calorie out</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @calories.each do |calory| %>
+      <tr>
+        <td><%= calory.calorie_in %></td>
+        <td><%= calory.calorie_out %></td>
+        <td><%= calory.weight %></td>
+        <td><%= calory.height %></td>
+        <td><%= link_to 'Show', calory %></td>
+        <td><%= link_to 'Edit', edit_calory_path(calory) %></td>
+        <td><%= link_to 'Destroy', calory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Calorie', new_calory_path %>

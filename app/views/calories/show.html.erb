@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<br><br><br>
+<p>
+  <strong>Calorie in:</strong>
+  <%= @calorie.calorie_in %>
+</p>
+
+<p>
+  <strong>Calorie out:</strong>
+  <%= @calorie.calorie_out %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @calorie.weight %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @calorie.height %>
+</p>
+
+<%= link_to 'Edit', edit_calory_path(@calorie) %> |
+<%= link_to 'Back', calories_path %>

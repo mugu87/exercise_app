@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  calorie_in: 1
+  calorie_out: 1
+  weight: 1
+  height: 1
+
+two:
+  calorie_in: 1
+  calorie_out: 1
+  weight: 1
+  height: 1
