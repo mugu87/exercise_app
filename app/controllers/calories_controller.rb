@@ -32,7 +32,7 @@ class CaloriesController < ApplicationController
 
     respond_to do |format|
       if @calorie.save
-        open("https://stormy-island-6340.herokuapp.com/st_users/1")
+        open("https://stormy-island-6340.herokuapp.com/st_users/1/update_db")
         format.html { redirect_to @calorie, notice: 'Calorie was successfully created.' }
         format.json { render action: 'show', status: :created, location: @calorie }
       else
