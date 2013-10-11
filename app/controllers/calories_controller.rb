@@ -36,7 +36,7 @@ class CaloriesController < ApplicationController
       if @calorie.save
         format.html { redirect_to @calorie, notice: 'Calorie was successfully created.' }
         format.json { render action: 'show', status: :created, location: @calorie }
-        url = URI.parse("http://localhost:3000/st_users/1/update_db")
+        url = URI.parse("https://stormy-island-6340.herokuapp.com/st_users/1")
         request = Net::HTTP::Post.new(url.path)
         Net::HTTP.start(url.host, url.port) {|http| http.request(request)}
 
