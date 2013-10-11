@@ -1,5 +1,3 @@
-require 'net/http'
-
 class CaloriesController < ApplicationController
   before_action :set_calorie, only: [:show, :edit, :update, :destroy]
 
@@ -36,9 +34,7 @@ class CaloriesController < ApplicationController
       if @calorie.save
         format.html { redirect_to @calorie, notice: 'Calorie was successfully created.' }
         format.json { render action: 'show', status: :created, location: @calorie }
-        url = URI.parse("https://stormy-island-6340.herokuapp.com/st_users/1")
-        request = Net::HTTP::Post.new(url.path)
-        Net::HTTP.start(url.host, url.port) {|http| http.request(request)}
+        open("https://stormy-island-6340.herokuapp.com/st_users/1")
 
       else
         format.html { render action: 'new' }
