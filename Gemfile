@@ -8,7 +8,7 @@ gem 'rabl'
 gem 'oj'
 
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+
 
 #twitter bootstrap
 gem 'bootstrap-sass'
@@ -42,7 +42,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+	gem 'sqlite3'
+end
+
 group :production do
+	gem 'pg'
   gem 'rails_12factor', '0.0.2'
 end
 
