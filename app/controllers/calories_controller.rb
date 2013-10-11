@@ -32,7 +32,6 @@ class CaloriesController < ApplicationController
 
     respond_to do |format|
       if @calorie.save
-        open("https://stormy-island-6340.herokuapp.com/st_users/1/update_db")
         format.html { redirect_to @calorie, notice: 'Calorie was successfully created.' }
         format.json { render action: 'show', status: :created, location: @calorie }
       else
@@ -40,7 +39,6 @@ class CaloriesController < ApplicationController
         format.json { render json: @calorie.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
   # PATCH/PUT /calories/1
