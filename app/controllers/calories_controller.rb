@@ -48,6 +48,9 @@ class CaloriesController < ApplicationController
       if @calorie.update(calorie_params)
         format.html { redirect_to @calorie, notice: 'Calorie was successfully updated.' }
         format.json { head :no_content }
+        url = URI.parse('http://localhost:3000')
+        request = Net::HTTP::Post.new(url.path)
+        Net::HTTP.start(url.host, url.port) {|http| http.request(request)}
       else
         format.html { render action: 'edit' }
         format.json { render json: @calorie.errors, status: :unprocessable_entity }
