@@ -1,3 +1,5 @@
+require 'net/http'
+
 class CaloriesController < ApplicationController
   before_action :set_calorie, only: [:show, :edit, :update, :destroy]
 
@@ -11,7 +13,7 @@ class CaloriesController < ApplicationController
   # GET /calories/1
   # GET /calories/1.json
   def show
-    
+
   end
 
 
@@ -34,6 +36,10 @@ class CaloriesController < ApplicationController
       if @calorie.save
         format.html { redirect_to @calorie, notice: 'Calorie was successfully created.' }
         format.json { render action: 'show', status: :created, location: @calorie }
+        url = URI.parse("http://localhost:3000/st_users/1/update_db")
+        request = Net::HTTP::Post.new(url.path)
+        Net::HTTP.start(url.host, url.port) {|http| http.request(request)}
+
       else
         format.html { render action: 'new' }
         format.json { render json: @calorie.errors, status: :unprocessable_entity }
@@ -48,9 +54,6 @@ class CaloriesController < ApplicationController
       if @calorie.update(calorie_params)
         format.html { redirect_to @calorie, notice: 'Calorie was successfully updated.' }
         format.json { head :no_content }
-        url = URI.parse('http://localhost:3000')
-        request = Net::HTTP::Post.new(url.path)
-        Net::HTTP.start(url.host, url.port) {|http| http.request(request)}
       else
         format.html { render action: 'edit' }
         format.json { render json: @calorie.errors, status: :unprocessable_entity }
@@ -78,4 +81,4 @@ class CaloriesController < ApplicationController
     def calorie_params
       params.require(:calorie).permit(:calorie_in, :calorie_out, :weight, :height)
     end
-end
+  end
